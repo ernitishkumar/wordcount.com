@@ -1,0 +1,1 @@
+javac -classpath c:\tomcat7\webapps\wordcount.com\WEB-INF\classes;. *.java

@@ -1,0 +1,16 @@
+<web-app>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>CountController</servlet-name>
+        <servlet-class>com.freecharge.servlets.CountController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CountController</servlet-name>
+        <url-pattern>/CountController</url-pattern>
+    </servlet-mapping>
+
+</web-app>
