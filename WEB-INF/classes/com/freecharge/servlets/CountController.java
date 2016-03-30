@@ -18,7 +18,7 @@ public class CountController extends HttpServlet{
 		try{    
 		String query=(String)httpServletRequest.getParameter("query");
 		if(query!=null && query.length()>0 && query.matches("^[A-Za-z]+$")){
-            jsonResponse.put("count",fileDAO.getCount(query));
+            jsonResponse.put("count",fileDAO.getCount(query.toLowerCase()));
 		}else{
 			jsonResponse.put("Result","Some Error Occured.Please Try Again With a new word!");
 		}

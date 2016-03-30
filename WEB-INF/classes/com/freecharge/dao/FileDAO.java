@@ -18,7 +18,6 @@ public class FileDAO {
     public static Map<String,Integer> counts=new ConcurrentHashMap<String, Integer>();
     
     public int getCount(String word) throws FileNotFoundException,IOException{
-    	word=word.toLowerCase();
     	int count=0;
         Integer cacheCount=counts.get(word);
         if(cacheCount==null){
