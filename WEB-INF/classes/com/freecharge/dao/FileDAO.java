@@ -6,15 +6,16 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.freecharge.utility.GlobalResources;
 
 public class FileDAO {
 
-    public static Map<String,Integer> counts=new HashMap<String,Integer>();
+    public static Map<String,Integer> counts=new ConcurrentHashMap<String, Integer>();
     
     public int getCount(String word) throws FileNotFoundException,IOException{
     	word=word.toLowerCase();
@@ -39,9 +40,7 @@ public class FileDAO {
             }catch(IOException ioe){
             	System.out.println("IOException in class FileDAO : method : getCount(String) "+ioe.getMessage());
             }
-            synchronized(this){
-        	counts.put(word, count);
-            }
+            counts.put(word, count);
         }else{
         	System.out.println("Word Present in cache.");
         	count=cacheCount.intValue();
