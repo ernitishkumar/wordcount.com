@@ -11,16 +11,16 @@ import com.freecharge.dao.FileDAO;
 import org.json.simple.JSONObject;
 
 public class CountController extends HttpServlet{
-    private FileDAO fileDAO=new FileDAO();
 	protected void processRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
 	throws ServletException, IOException {
         JSONObject jsonResponse = new JSONObject();
+        FileDAO fileDAO=new FileDAO();
 		try{    
 		String query=(String)httpServletRequest.getParameter("query");
-		if(query!=null && query.length()>0){
+		if(query!=null && query.length()>0 && query.matches("^[A-Za-z]+$")){
             jsonResponse.put("count",fileDAO.getCount(query));
 		}else{
-			jsonResponse.put("Result","Some Error Occured.Please Try Again!");
+			jsonResponse.put("Result","Some Error Occured.Please Try Again With a new word!");
 		}
     }catch(Exception e){
             jsonResponse.put("Result","Some Error Occured.Please Try Again!");
