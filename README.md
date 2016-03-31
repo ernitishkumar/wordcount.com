@@ -14,4 +14,8 @@ Please follow the below steps to get the project started.
 7. Compile GlobalResources.java by calling cmp.bat in that directory.
 8. Run the server.
 9. Access the webapp from the browser.
+10. To run the test cases migrate to com.freecharge.test directory
+11. Change the cmp.bat and run.bat files by providing the proper directory structure of your maching and project.
+12. Then run cmp.bat to compile the files and run.bat to run the test cases.
+
 
