@@ -1,0 +1,1 @@
+java -classpath c:\tomcat7\webapps\wordcount.com\WEB-INF\lib\junit-4.10.jar;c:\tomcat7\webapps\wordcount.com\WEB-INF\classes;. com.freecharge.test.TestRunner
