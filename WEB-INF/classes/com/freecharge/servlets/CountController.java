@@ -21,23 +21,19 @@ public class CountController extends HttpServlet{
             jsonResponse.put("count",fileDAO.getCount(query.toLowerCase()));
 		}else{
 			jsonResponse.put("Result","Some Error Occured.Please Try Again With a new word!");
+            httpServletResponse.setStatus(400);
 		}
     }catch(Exception e){
             jsonResponse.put("Result","Some Error Occured.Please Try Again!");
+            httpServletResponse.setStatus(500);
 	        System.out.println("Exception in class : CountController method: processRequest "+e.getMessage());
     }
            httpServletResponse.setContentType("application/json");
            httpServletResponse.getWriter().write(jsonResponse.toString());
 	}
-
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
+    
+    public void service(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
 		processRequest(request, response);
 	} 
-    
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
-		processRequest(request, response);
-	}
-    
 }

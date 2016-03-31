@@ -15,13 +15,13 @@ import com.freecharge.utility.GlobalResources;
 
 public class FileDAO {
 
-    public static Map<String,Integer> counts=new ConcurrentHashMap<String, Integer>();
+    public static Map<String,Long> counts=new ConcurrentHashMap<String, Long>();
     
-    public int getCount(String word) throws FileNotFoundException,IOException{
-    	int count=0;
-        Integer cacheCount=counts.get(word);
+    public long getCount(String word) throws FileNotFoundException,IOException{
+    	long count=0;
+        Long cacheCount=counts.get(word);
         if(cacheCount==null){
-        	System.out.println("Word not present in cache.Searching in file");
+        	//System.out.println("Word not present in cache.Searching in file");
         	try(BufferedReader inputFile=new BufferedReader(new FileReader(GlobalResources.FILE_PATH))){
             	String line=inputFile.readLine();
             	StringTokenizer tokenizer=null;
@@ -36,13 +36,15 @@ public class FileDAO {
             	}
             }catch(FileNotFoundException fnfe){
             	System.out.println("FileNotFoundException in class FileDAO : method : getCount(String) "+fnfe.getMessage());
+                throw fnfe;
             }catch(IOException ioe){
             	System.out.println("IOException in class FileDAO : method : getCount(String) "+ioe.getMessage());
+                throw ioe;
             }
             counts.put(word, count);
         }else{
-        	System.out.println("Word Present in cache.");
-        	count=cacheCount.intValue();
+        	//System.out.println("Word Present in cache.");
+        	count=cacheCount.longValue();
         }
         return count;
     }
