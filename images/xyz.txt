@@ -3,3 +3,5 @@ Hello its an testing file in testing branch.
 This change is being made from remote git hub testingbranch
 
 Added new remote changes. This will reflect in local after git pull or git fetch then git merge
+
+Added new remote changes for merge error
